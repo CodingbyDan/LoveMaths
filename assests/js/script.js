@@ -19,6 +19,13 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 
+    // Listener to submit the answer by pressing Enter key
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    }) 
+
     runGame("addition")
 })
 
@@ -27,6 +34,11 @@ document.addEventListener("DOMContentLoaded", function() {
  * and after the user's answer has been processed
  */
 function runGame(gameType) {
+    // Makes sure the answer box is emptied before each new question.
+    document.getElementById("answer-box").value = "";
+    // Makes sure the cursor is already active in the answer box (focus)
+    document.getElementById("answer-box").focus();
+
     // whole number, randomly generated up to 25 and +1 to round up, not down.
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
